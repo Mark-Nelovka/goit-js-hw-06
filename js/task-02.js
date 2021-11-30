@@ -19,30 +19,13 @@ const ingredients = [
 ];
 
 
-const list = document.querySelector('#ingredients');
+const ul = document.querySelector('#ingredients');
+const list = ingredients.map((name) => {
+    let elemEl1 = document.createElement('li');
+    elemEl1.textContent = name;
+    elemEl1.classList.add('item');
+    return elemEl1;
+});
 
-
-
-function create(ingredients, callback) {
-    ingredients.forEach((ingredient) => {
-        let elemEl1 = document.createElement('li');
-        elemEl1.textContent = ingredient;
-        elemEl1.classList.add('item');
-        callback(elemEl1);
-        return elemEl1;
-        });
-}
-
- create([
-  'Potatoes',
-  'Mushrooms',
-  'Garlic',
-  'Tomatos',
-  'Herbs',
-    'Condiments',
-], add);
-
-function add(elemEl1) {
-    list.append(elemEl1);
-};
- console.log(list);
+ul.append(...list);
+console.log(ul);
